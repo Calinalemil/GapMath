@@ -1,13 +1,13 @@
 # GapMath
 ### AI-Powered Math Knowledge Gap Analyzer
 
-GapMath helps students understand **why** their math solution was wrong — not just what the correct answer is. Using AI, it identifies the specific knowledge gaps behind their mistakes and explains them at the student's level.
+GapMath helps students understand **why** their math solution was wrong; not just what the correct answer is. Using AI, it identifies the specific knowledge gaps behind their mistakes and explains them at the student's level.
 
 ---
 
 ## The Problem
 
-Students often use software to help them with math homework. These tools give the correct answer, but students still do not understand what went wrong in their own reasoning. The problem is not obtaining the solution — **the problem is understanding it.**
+Students often use software to help them with math homework. These tools give the correct answer, but students still do not understand what went wrong in their own reasoning. The problem is not obtaining the solution, **the problem is understanding it.**
 
 GapMath was born from real experience working with students who were stuck not because they lacked effort, but because they lacked the foundational knowledge to understand their mistakes.
 
