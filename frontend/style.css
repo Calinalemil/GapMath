@@ -1,0 +1,543 @@
+:root {
+    --bg: #F7F7Fa;
+    --card: #FFFFFF;
+    --border: #DADAE3;
+    --text: #1F1F2B;
+    --text-secondary: #6B6B7B;
+    --purple: #6C5CE7;
+    --purple-tint: #EFEBFF;
+    --orange: #E8622E;
+    --green: #2E9E6B; 
+}
+
+/*--Base--*/
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: 'Segoe UI' Arial, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/*--Header--*/
+header {
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--border);
+    background-color: var(--card);
+    display: flex;
+    align-items: center;
+}
+
+.logo-group {
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    height: 50px;
+    width: auto;
+    display: block;
+}
+
+/*--Main Layout--*/
+main {
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    flex: 1;
+    min-height: 0;
+}
+
+/*--Input Panel--*/
+.input-panel {
+    background-color: var(--card);
+    border-right: 1px solid var(--border);
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow-y: auto;
+}
+
+/*--Result Panel--*/
+.result-panel {
+    background-color: var(--bg);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+/*--Panel Title--*/
+.panel-title {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-secondary);
+}
+
+/*--Upload Zone--*/
+.upload-zone {
+    border: 2px dashed var(--border);
+    border-radius: 12px;
+    padding: 28px 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s; /* With transition - smooth change over 0.2 seconds */
+    position: relative;
+    background-color: var(--card);
+}
+
+.upload-zone:hover {
+    border-color: var(--purple);  /* only purple when hovering */
+    background-color: var(--purple-tint);
+}
+
+.upload-zone input[type="file"] {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.upload-icon i {
+    font-size: 32px;
+    color: var(--text-secondary);
+    margin-bottom: 10px;
+}
+
+.upload-zone p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+.preview-img {
+    width: 100%;
+    max-height: 160px;
+    object-fit: contain; /*it scales proportionally when the student uploads an image.*/
+    border-radius: 8px;
+    border: 1px solid var(--border);
+}
+
+/*--Divider--*/
+.divider {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-secondary);
+    font-size: 12px;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background-color: var(--border);
+}
+
+/*--Text Area--*/
+textarea {
+    width: 100%;
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    color: var(--text);
+    font-family: 'Segoe UI', Arial, sans-serif;
+    font-size: 13px;
+    padding: 14px;
+    resize: vertical;
+    min-height: 140px;
+    outline: none;
+    transition: border-color 0.2s;
+    line-height: 1.6;
+}
+
+textarea::placeholder {
+    color: var(--text);
+    opacity: 0.4;
+}
+
+textarea:focus {
+    border-color: var(--purple);
+}
+
+/*--Grade button--*/
+.grade-row {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+}
+
+.grade-chip {
+    flex: 1;
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    color: var(--text-secondary);
+    font-size: 13px;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    padding: 10px 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+    font-weight: 500;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+.grade-chip:hover {
+    border-color: var(--purple);
+    color: var(--text);
+}
+
+.grade-chip.active {
+    border-color: var(--purple);
+    background-color: var(--purple-tint);
+    color:var(--purple);
+    border-radius: 12px;
+    font-weight: 600;
+}
+
+/*--Analyze Buttton--*/
+.analyze-btn {
+    background-color: var(--purple);
+    border: none;
+    border-radius: 10px;
+    color: #FFFFFF;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 14px;
+    cursor: pointer;
+    width: 100%;
+    transition: opacity 0.2s, transform 0.1s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.analyze-btn:hover {
+    opacity: 0.9;
+}
+
+.analyze-btn:active {
+    transform: scale(0.98);
+}
+
+.analyze-btn:disabled {
+    opacity:0.5;
+    cursor: not-allowed;
+}
+
+/*--Empty State--*/
+.empty-state {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    gap: 16px;
+    padding: 40px;
+}
+
+.empty-state i {
+    font-size: 56px;
+    opacity: 0.3;
+}
+
+.empty-state p {
+    font-size: 15px;
+    text-align: center;
+    max-width: 300 px;
+    line-height: 1.6;
+}
+
+/*--Loanding State--*/
+.loading-state {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.spinner {
+    width: 44px;
+    height: 44px;
+    border: 3px solid var(--border);
+    border-top-color: var(--purple);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {transform: rotate(360deg);}
+}
+
+.loading-state p {
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+/*--Result Area--*/
+.results {
+    padding: 28px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/*--Result Header--*/
+.result-header {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+}
+
+.score-box {
+    display: none;
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px 24px;
+    min-width: 130px;
+    text-align: center;
+}
+
+.score-num {
+    font-size: 40px;
+    font-weight: 700;
+    color: var(--purple);
+    line-height: 1;
+}
+
+.score-label {
+    font-size: 11px;
+    color: var(--text-secondary);
+    margin-top: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+
+.summary-card {
+    flex: 1;
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px;
+}
+
+.summary-card h3 {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text);
+}
+
+.summary-card p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.65;
+}
+
+/*--Section Label--*/
+.section-label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background-color: var(--border);
+}
+
+/*--Gap Cards--*/
+.gaps-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.gap-card {
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 18px;
+    border-left: 3px solid transparent;
+}
+
+.gap-card.critical {border-left-color: var(--orange);}
+.gap-card.moderate {border-left-color: #f59e0b;}
+.gap-card.minor {border-left-color: var(--green);}
+
+.gap-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+}
+
+.gap-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.gap-badge {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 3px 9px;
+    border-radius: 20px;
+}
+
+.critical .gap-badge {
+    background-color: #FEE2E2;
+    color: var(--orange);
+}
+.moderate .gap-badge {
+    background-color: #fef3c7;
+    color: #D97706;
+}
+.minor .gap-badge {
+    background-color: #d1fae5;
+    color: var(--green);
+}
+
+.gap-desc {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+.gap-hint {
+    background-color: var(--bg);
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 13px;
+    color: var(--text);
+    line-height: 1.5;
+}
+
+.gap-hint-label {
+    font-size: 11px;
+    color: var(--purple);
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+/*--Gap Example--*/
+.gap-example {
+    background-color: var(--bg);
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 13px;
+    color: var(--text);
+    line-height: 1.5;
+    margin-top: 8px;
+    border-left: 3px solid var(--purple);
+}
+
+.gap-example-label {
+    font-size: 11px;
+    color: var(--purple);
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+/*--Next Steps--*/
+.steps-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.step-item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px;
+}
+
+.step-num {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background-color: var(--purple);
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.step-content {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.step-content strong {
+    color: var(--text);
+    display: block;
+    font-size: 14px;
+    margin-bottom: 3px;    
+}
+
+/*--Success Card--*/
+.success-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 28px;
+  background-color: #D1FAE5;
+  border: 1px solid var(--green);
+  border-radius: 12px;
+  text-align: center;
+}
+
+.success-card i {
+  font-size: 40px;
+  color: var(--green);
+}
+
+.success-card p {
+  font-size: 15px;
+  color: var(--green);
+  font-weight: 600;
+}
+
+/*--Step Exercise--*/
+.step-exercise {
+    margin-top: 8px;
+    padding: 8px 12px;
+    background-color: var(--bg);
+    border-radius: 8px;
+    font-size: 12px;
+    color: var(--purple);
+    font-weight: 500;
+}
